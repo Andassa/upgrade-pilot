@@ -1,0 +1,19 @@
+paths:
+  - test/unit
+  - test/golden
+  - test/security
+  - test/architecture
+  - test/integration
+
+tags:
+  integration:
+    skip: "Run with `make integration` (needs Flutter and an Android SDK)."
+    timeout: 45m
+  golden:
+
+presets:
+  integration:
+    include_tags: integration
+    tags:
+      integration:
+        skip: false

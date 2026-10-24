@@ -1,0 +1,7 @@
+test/fixtures/
+test/golden/goldens/
+.github/
+tool/
+coverage/
+build/
+dist/

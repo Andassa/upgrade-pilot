@@ -1,0 +1,18 @@
+include: package:very_good_analysis/analysis_options.yaml
+
+analyzer:
+  language:
+    strict-casts: true
+    strict-inference: true
+    strict-raw-types: true
+  exclude:
+    - test/fixtures/**
+    - build/**
+
+linter:
+  rules:
+    # The CLI writes to stdout through its own Console abstraction.
+    avoid_print: true
+    # Public API docs are required on the exported library surface only.
+    public_member_api_docs: false
+    lines_longer_than_80_chars: true

@@ -1,0 +1,41 @@
+# Dart
+.dart_tool/
+.packages
+build/
+coverage/
+doc/api/
+*.exe
+/dist/
+
+# Local sandboxes and caches produced while developing
+.upgrade-pilot/
+test/fixtures/**/.dart_tool/
+test/fixtures/**/build/
+test/fixtures/**/android/local.properties
+test/fixtures/**/android/.gradle/
+test/fixtures/**/android/gradlew
+test/fixtures/**/android/gradlew.bat
+test/fixtures/**/android/gradle/wrapper/gradle-wrapper.jar
+test/fixtures/**/ios/Flutter/Generated.xcconfig
+test/fixtures/**/ios/Flutter/flutter_export_environment.sh
+test/fixtures/**/ios/Pods/
+test/fixtures/**/.flutter-plugins*
+test/fixtures/**/pubspec.lock
+
+# AI agent configuration stays local
+.cursor/
+.cursorrules
+.cursorignore
+.claude/
+CLAUDE.md
+AGENTS.md
+.github/copilot-instructions.md
+.windsurfrules
+.aider*
+.continue/
+
+# Editors and OS
+.idea/
+.vscode/
+*.iml
+.DS_Store

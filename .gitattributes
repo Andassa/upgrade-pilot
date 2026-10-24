@@ -1,0 +1,4 @@
+# Embedded data is checksummed: keep LF everywhere.
+* text=auto eol=lf
+*.png binary
+*.jar binary
