@@ -1,0 +1,20 @@
+
+  ␛[38;5;78m╭─␛[39m ␛[1m␛[38;5;78m✔␛[39m Verified plan␛[22m ␛[38;5;78m──────────────────────────────────╮␛[39m
+  ␛[38;5;78m│␛[39m 2 changes  ␛[38;5;245m·␛[39m  1 dependency to update  ␛[38;5;245m·␛[39m  0 blocked ␛[38;5;78m│␛[39m
+  ␛[38;5;78m│␛[39m Android build ␛[38;5;78m✔␛[39m   iOS build ␛[38;5;245m─␛[39m   Tests ␛[38;5;245mnot run␛[39m      ␛[38;5;78m│␛[39m
+  ␛[38;5;78m╰────────────────────────────────────────────────────╯␛[39m
+
+  ␛[1mChanges␛[22m
+  ␛[38;5;141m→␛[39m android/settings.gradle  AGP 8.1.0 → 8.11.1, Kotlin 1.8.22 → 2.2.20
+  ␛[38;5;141m→␛[39m pubspec.lock             ␛[38;5;245m3 packages re-resolved␛[39m
+
+  ␛[1mNot verified␛[22m
+  ␛[38;5;245m─␛[39m iOS build: Xcode not available
+  ␛[38;5;245m─␛[39m Tests: not run (use --run-tests)
+  ␛[38;5;245m─␛[39m Runtime behaviour: a successful build does not prove that the app behaves the same
+
+  ␛[1mManual steps␛[22m
+  ␛[38;5;141m◆␛[39m Switch your Flutter SDK to 3.44.9
+      ␛[38;5;141mflutter upgrade␛[39m
+
+  ␛[1mNext␛[22m   ␛[38;5;141mupgrade-pilot report --open␛[39m   ␛[38;5;245m·␛[39m   ␛[38;5;141mupgrade-pilot apply␛[39m

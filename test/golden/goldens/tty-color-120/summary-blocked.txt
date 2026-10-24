@@ -1,0 +1,29 @@
+
+  ␛[38;5;203m╭─␛[39m ␛[1m␛[38;5;203m✖␛[39m Plan blocked␛[22m ␛[38;5;203m───────────────────────────────────╮␛[39m
+  ␛[38;5;203m│␛[39m 2 changes  ␛[38;5;245m·␛[39m  1 dependency to update  ␛[38;5;245m·␛[39m  1 blocked ␛[38;5;203m│␛[39m
+  ␛[38;5;203m│␛[39m Android build ␛[38;5;203m✖␛[39m   iOS build ␛[38;5;245m─␛[39m   Tests ␛[38;5;245mnot run␛[39m      ␛[38;5;203m│␛[39m
+  ␛[38;5;203m╰────────────────────────────────────────────────────╯␛[39m
+
+  ␛[1mChanges tried␛[22m  ␛[38;5;245mlast attempt, not verified␛[39m
+  ␛[38;5;141m→␛[39m android/settings.gradle  AGP 8.1.0 → 8.11.1, Kotlin 1.8.22 → 2.2.20
+  ␛[38;5;141m→␛[39m pubspec.lock             ␛[38;5;245m3 packages re-resolved␛[39m
+
+  ␛[1mBlocked␛[22m
+  ␛[38;5;203m✖␛[39m ␛[1mprogress_dialog 1.2.4␛[22m
+      No published version supports Dart 3.12.2.
+      ␛[38;5;141m→␛[39m suggestion (not verified): other_dialog (replacement named on pub.dev)
+      ␛[38;5;245mdetails: upgrade-pilot explain UP-PUB-0001␛[39m
+
+  ␛[1mDiagnosis␛[22m
+  ␛[38;5;203m✖␛[39m ␛[38;5;141mUP-PUB-0001␛[39m  ␛[1mDependency without null safety␛[22m  ␛[38;5;245m(pub get)␛[39m
+      Cause: progress_dialog predates null safety.
+      Fix: Upgrade progress_dialog.
+      ␛[38;5;245m│␛[39m ␛[38;5;245mBecause app depends on progress_dialog which doesn't support null safety␛[39m
+      ␛[38;5;141mhttps://dart.dev/null-safety␛[39m
+
+  ␛[1mNot verified␛[22m
+  ␛[38;5;245m─␛[39m iOS build: Xcode not available
+  ␛[38;5;245m─␛[39m Tests: not run (use --run-tests)
+  ␛[38;5;245m─␛[39m Runtime behaviour: a successful build does not prove that the app behaves the same
+
+  ␛[1mNext␛[22m   ␛[38;5;141mupgrade-pilot report --open␛[39m   ␛[38;5;245m·␛[39m   ␛[38;5;141mupgrade-pilot explain UP-PUB-0001␛[39m

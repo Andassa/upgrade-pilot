@@ -1,0 +1,5 @@
+  ␛[38;2;248;113;113m✖␛[39m ␛[1mThe project changed since the plan␛[22m
+    ␛[38;2;139;143;163mWhy       ␛[39m  Files covered by the plan were edited after `plan` ran.
+    ␛[38;2;139;143;163mWhat to do␛[39m  Run `upgrade-pilot plan` again to verify the current state.
+    ␛[38;2;139;143;163mMore info ␛[39m  ␛[38;2;167;139;250mhttps://github.com/Andassa/upgrade-pilot#read
+                me␛[39m

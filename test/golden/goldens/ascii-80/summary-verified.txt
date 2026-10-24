@@ -1,0 +1,21 @@
+
+  +- ok Verified plan ---------------------------------+
+  | 2 changes  |  1 dependency to update  |  0 blocked |
+  | Android build ok   iOS build -   Tests not run     |
+  +----------------------------------------------------+
+
+  Changes
+  -> android/settings.gradle  AGP 8.1.0 -> 8.11.1, Kotlin 1.8.22 -> 2.2.20
+  -> pubspec.lock             3 packages re-resolved
+
+  Not verified
+  - iOS build: Xcode not available
+  - Tests: not run (use --run-tests)
+  - Runtime behaviour: a successful build does not prove that the app behaves
+    the same
+
+  Manual steps
+  i Switch your Flutter SDK to 3.44.9
+      flutter upgrade
+
+  Next   upgrade-pilot report --open   |   upgrade-pilot apply

@@ -1,0 +1,23 @@
+  Project    my_app  ·  Flutter 3.24.5  →  3.44.9
+  Platforms  android, ios
+  Sandbox    isolated copy, your project stays untouched
+
+[11:02:01]   ✔ Inspect project           my_app                                        0.4s
+[11:02:03]   ✔ Resolve Flutter 3.44.9 (stable)                                         0.3s
+[11:02:05]   ✔ Prepare Flutter 3.44.9    cached                                        1.1s
+[11:02:07]   ✔ Create sandbox            128 files, 2 secrets excluded                 2.3s
+[11:02:08]   ● Verify upgrade ····························································
+[11:02:09]     ◆ attempt 1/6  AGP 8.5.0 → 8.11.1, Gradle 8.7 → 8.14
+[11:02:10]     ● pub get
+[11:02:12]     ✔ pub get                                                               9.8s
+[11:02:13]     ● analyze
+[11:02:15]     ▲ analyze                 3 warnings                                   14.2s
+[11:02:16]     ● build apk
+[11:02:18]     ✖ build apk               UP-AND-0007                                  41.0s
+[11:02:19]     ↻ retry 2/6  AGP 8.5.0 → 9.0.1, android.builtInKotlin=false
+[11:02:20]     ● pub get
+[11:02:22]     ✔ pub get                                                               5.1s
+[11:02:23]     ● build apk
+[11:02:25]     ✔ build apk                                                            52.6s
+[11:02:26]     ─ build ios (no-codesign) skipped (Xcode not available)
+[11:02:27]     ─ tests                   skipped (use --run-tests)

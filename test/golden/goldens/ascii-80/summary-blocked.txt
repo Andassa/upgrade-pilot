@@ -1,0 +1,30 @@
+
+  +- x Plan blocked -----------------------------------+
+  | 2 changes  |  1 dependency to update  |  1 blocked |
+  | Android build x   iOS build -   Tests not run      |
+  +----------------------------------------------------+
+
+  Changes tried  last attempt, not verified
+  -> android/settings.gradle  AGP 8.1.0 -> 8.11.1, Kotlin 1.8.22 -> 2.2.20
+  -> pubspec.lock             3 packages re-resolved
+
+  Blocked
+  x progress_dialog 1.2.4
+      No published version supports Dart 3.12.2.
+      -> suggestion (not verified): other_dialog (replacement named on pub.dev)
+      details: upgrade-pilot explain UP-PUB-0001
+
+  Diagnosis
+  x UP-PUB-0001  Dependency without null safety  (pub get)
+      Cause: progress_dialog predates null safety.
+      Fix: Upgrade progress_dialog.
+      | Because app depends on progress_dialog which doesn't support null safety
+      https://dart.dev/null-safety
+
+  Not verified
+  - iOS build: Xcode not available
+  - Tests: not run (use --run-tests)
+  - Runtime behaviour: a successful build does not prove that the app behaves
+    the same
+
+  Next   upgrade-pilot report --open   |   upgrade-pilot explain UP-PUB-0001

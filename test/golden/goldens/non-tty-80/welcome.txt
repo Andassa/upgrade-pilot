@@ -1,0 +1,19 @@
+
+  █ █ █▀█ █▀▀ █▀█ █▀█ █▀▄ █▀▀     █▀█ ▀█▀ █   █▀█ ▀█▀
+  █ █ █▀▀ █ █ █▀▄ █▀█ █ █ █▀  ▀▀▀ █▀▀  █  █   █ █  █
+  ▀▀▀ ▀   ▀▀▀ ▀ ▀ ▀ ▀ ▀▀  ▀▀▀     ▀   ▀▀▀ ▀▀▀ ▀▀▀  ▀
+
+  Rehearse your next Flutter upgrade in a sandbox. Apply only what is proven.
+
+  ╭─ ◆ Get started ─────────────────────────────────────────────────╮
+  │                                                                 │
+  │ upgrade-pilot doctor          check your environment            │
+  │ upgrade-pilot plan            simulate the upgrade in a sandbox │
+  │ upgrade-pilot report --open   open the verified plan            │
+  │ upgrade-pilot apply           apply it, with a backup           │
+  │                                                                 │
+  ╰─────────────────────────────────────────────────────────────────╯
+
+  v1.0.0 · KB 2026.10.24 · Your project is never modified before `apply`.
+  Run upgrade-pilot --help to see every command and option.
+

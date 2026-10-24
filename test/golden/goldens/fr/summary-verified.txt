@@ -1,0 +1,21 @@
+
+  ╭─ ✔ Plan vérifié ────────────────────────────────────────────────╮
+  │ 2 modifications  ·  1 dépendance à mettre à jour  ·  0 bloquées │
+  │ Build Android ✔   Build iOS ─   Tests non lancés                │
+  ╰─────────────────────────────────────────────────────────────────╯
+
+  Modifications
+  → android/settings.gradle  AGP 8.1.0 → 8.11.1, Kotlin 1.8.22 → 2.2.20
+  → pubspec.lock             3 packages re-resolved
+
+  Non vérifié
+  ─ iOS build: Xcode not available
+  ─ Tests: not run (use --run-tests)
+  ─ Runtime behaviour: a successful build does not prove that the app behaves
+    the same
+
+  Étapes manuelles
+  ◆ Switch your Flutter SDK to 3.44.9
+      flutter upgrade
+
+  Ensuite   upgrade-pilot report --open   ·   upgrade-pilot apply
