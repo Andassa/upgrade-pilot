@@ -91,8 +91,19 @@ final class LocalFileSystem implements FileSystem {
   Future<String> createPrivateTempDirectory(String parent, String prefix) =>
       _guard(parent, () async {
         await Directory(parent).create(recursive: true);
-        // mkdtemp(3) creates the directory with mode 0700 and a random name.
         final dir = await Directory(parent).createTemp(prefix);
+        if (!Platform.isWindows) {
+          // createTemp honours the umask on Linux (often 0755): enforce 0700
+          // and fail closed if the mode cannot be set.
+          final chmod = await Process.run('chmod', ['700', dir.path]);
+          if (chmod.exitCode != 0 || dir.statSync().mode & 0x1ff != 0x1c0) {
+            await dir.delete(recursive: true);
+            throw FsException(
+              'Cannot make the sandbox private',
+              path: dir.path,
+            );
+          }
+        }
         return dir.path;
       });
 
