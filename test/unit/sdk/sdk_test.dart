@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:path/path.dart' as p;
 import 'package:pub_semver/pub_semver.dart';
 import 'package:test/test.dart';
 import 'package:upgrade_pilot/src/domain/hashing.dart';
@@ -188,7 +189,7 @@ void main() {
     test('reuses the global SDK read-only when it matches', () async {
       final sdk = await manager().obtain(index.resolve('3.44.8'), index);
       expect(sdk.source, SdkSource.global);
-      expect(sdk.flutter, '/opt/flutter/bin/flutter');
+      expect(sdk.flutter, p.join('/opt/flutter', 'bin', 'flutter'));
       expect(http.downloads, isEmpty);
     });
 

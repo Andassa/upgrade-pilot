@@ -9,6 +9,10 @@ import 'package:upgrade_pilot/src/sandbox/sandbox.dart';
 
 import '../../support/fakes.dart';
 
+/// The in-memory file system stores POSIX paths; package:path produces
+/// backslashes on Windows.
+String posix(String path) => path.replaceAll(r'\', '/');
+
 void main() {
   group('CopyPolicy', () {
     test('secrets', () {
@@ -78,10 +82,10 @@ void main() {
       expect(sandbox.root, startsWith('/tmp/upgrade-pilot-'));
       expect(sandbox.report.secretsExcluded, 3);
       expect(sandbox.report.linksSkipped, ['outside']);
-      final copied =
-          fs.files.keys.where((k) => k.startsWith(sandbox.copyRoot)).toList();
-      final names = copied
-          .map((k) => p.posix.relative(k, from: sandbox.copyRoot))
+      final copyRoot = posix(sandbox.copyRoot);
+      final names = fs.files.keys
+          .where((k) => k.startsWith(copyRoot))
+          .map((k) => p.posix.relative(k, from: copyRoot))
           .toSet();
       expect(
         names,
@@ -133,7 +137,7 @@ void main() {
         copyRoot: '/work/mono',
       );
       expect(sandbox.projectPrefix, 'apps/app');
-      expect(sandbox.projectDirectory, endsWith('/src/apps/app'));
+      expect(sandbox.projectDirectory, endsWith(p.join('src', 'apps', 'app')));
       expect(
         fs.text(
           p.posix.join(sandbox.copyRoot, 'packages/shared/pubspec.yaml'),

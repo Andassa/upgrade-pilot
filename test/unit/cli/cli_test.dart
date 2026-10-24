@@ -1,3 +1,8 @@
+// Drives the CLI on a simulated POSIX machine (/home/dev, /work...).
+// Windows path handling is covered by the infra tests on a real disk.
+@TestOn('!windows')
+library;
+
 import 'dart:convert';
 
 import 'package:test/test.dart';

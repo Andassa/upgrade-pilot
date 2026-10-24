@@ -1,3 +1,4 @@
+import 'package:path/path.dart' as p;
 import 'package:test/test.dart';
 import 'package:upgrade_pilot/src/diagnose/diagnoser.dart';
 import 'package:upgrade_pilot/src/domain/evidence.dart';
@@ -231,7 +232,10 @@ void main() {
         '/cache/sdks/3.44.9/flutter',
         windows: false,
       );
-      expect(env['PATH'], '/cache/sdks/3.44.9/flutter/bin:/usr/bin');
+      expect(
+        env['PATH'],
+        '${p.join('/cache/sdks/3.44.9/flutter', 'bin')}:/usr/bin',
+      );
       expect(env['HOME'], '/home/dev');
       expect(env['JAVA_HOME'], '/jdk');
       expect(env, isNot(contains('GITHUB_TOKEN')));
@@ -250,7 +254,7 @@ void main() {
       expect(env['SystemRoot'], r'C:\Windows');
       expect(
         childEnvironment(const {}, '/sdk', windows: false)['PATH'],
-        '/sdk/bin',
+        p.join('/sdk', 'bin'),
       );
     });
   });

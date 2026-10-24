@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:path/path.dart' as p;
 import 'package:test/test.dart';
 import 'package:upgrade_pilot/src/application/change_summary.dart';
 import 'package:upgrade_pilot/src/application/git.dart';
@@ -141,7 +142,7 @@ void main() {
       expect(jsonEncode(loaded.toJson()), jsonEncode(samplePlan().toJson()));
       expect(
         await store.directoryFor('/p'),
-        startsWith('/home/dev/.cache/upgrade-pilot/plans/'),
+        startsWith(p.join('/home/dev/.cache/upgrade-pilot', 'plans')),
       );
       fs.addFile(await store.planPath('/p'), '[]');
       await expectLater(store.load('/p'), throwsA(isA<PlanStoreException>()));
@@ -223,12 +224,15 @@ void main() {
     expect(
       kept,
       containsAll(
-        ['/home/dev/.cache/upgrade-pilot/plans', '/tmp/upgrade-pilot-1'],
+        [
+          p.join('/home/dev/.cache/upgrade-pilot', 'plans'),
+          p.join('/tmp', 'upgrade-pilot-1'),
+        ],
       ),
     );
     expect(fs.text('/home/dev/.cache/upgrade-pilot/sdks/3.44.9/x'), isNotNull);
     final removed = await clean.clean();
-    expect(removed, ['/home/dev/.cache/upgrade-pilot/sdks']);
+    expect(removed, [p.join('/home/dev/.cache/upgrade-pilot', 'sdks')]);
     expect(
       fs.text('/home/dev/.cache/upgrade-pilot/backups/a/m.json'),
       isNotNull,

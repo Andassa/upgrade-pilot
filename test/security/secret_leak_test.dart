@@ -1,3 +1,8 @@
+// Drives the CLI on a simulated POSIX machine (/home/dev, /work...).
+// It runs on the Linux and macOS jobs.
+@TestOn('!windows')
+library;
+
 import 'dart:convert';
 
 import 'package:test/test.dart';

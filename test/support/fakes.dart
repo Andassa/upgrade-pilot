@@ -192,8 +192,12 @@ final class FakeProcessRunner implements ProcessRunner {
   final _scripts = <(bool Function(Command), ProcessScript)>[];
 
   /// Answers commands whose display contains [fragment].
-  void on(String fragment, ProcessScript script) =>
-      _scripts.add(((c) => c.display.contains(fragment), script));
+  void on(String fragment, ProcessScript script) => _scripts.add(
+        (
+          (c) => c.display.replaceAll(r'\', '/').contains(fragment),
+          script,
+        ),
+      );
 
   @override
   Future<ProcessOutcome> run(
