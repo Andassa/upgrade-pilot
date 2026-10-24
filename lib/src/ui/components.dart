@@ -206,10 +206,8 @@ final class Ui {
     final pad = ' ' * indent;
     final lines = wrap(text, math.max(20, contentWidth - indent - 2));
     return [
-      for (var i = 0; i < lines.length; i++)
-        i == 0
-            ? '$margin$pad${mark(kind)} ${lines[i]}'
-            : '$margin$pad  ${lines[i]}',
+      if (lines.isNotEmpty) '$margin$pad${mark(kind)} ${lines.first}',
+      for (final line in lines.skip(1)) '$margin$pad  $line',
     ];
   }
 

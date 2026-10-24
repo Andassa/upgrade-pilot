@@ -226,7 +226,8 @@ void main() {
       containsAll(
         [
           p.join('/home/dev/.cache/upgrade-pilot', 'plans'),
-          p.join('/tmp', 'upgrade-pilot-1'),
+          // Listed from the in-memory file system: always a POSIX path.
+          '/tmp/upgrade-pilot-1',
         ],
       ),
     );
