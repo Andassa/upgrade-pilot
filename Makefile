@@ -61,11 +61,11 @@ verify: deps fmt-check ## Everything CI checks: format, data, analysis, tests, c
 docs: deps ## API documentation into build/doc
 	dart doc --output build/doc
 
-demo: build ## Record a real run on the legacy fixture (see docs/demo.sh)
-	bash docs/demo.sh
+demo: build ## Record a real run on the legacy fixture (see doc/demo.sh)
+	bash doc/demo.sh
 
 release-dry-run: deps build ## Check publication and the binary
-	dart pub publish --dry-run
+	dart run tool/publish_check.dart
 	$(BINARY) --version
 
 clean: ## Remove build outputs and coverage (caches: upgrade-pilot clean)

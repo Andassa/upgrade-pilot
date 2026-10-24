@@ -8,7 +8,11 @@ import 'fakes.dart';
 
 const projectRoot = '/work/legacy_app';
 
-const legacyFiles = {
+/// Joins [parts]: fake credentials are split in the sources so that secret
+/// scanners (pub, gitleaks) do not flag these deliberate test values.
+String fakeSecret(List<String> parts) => parts.join();
+
+final legacyFiles = {
   'pubspec.yaml': '''
 name: legacy_app
 environment:
@@ -44,7 +48,7 @@ android {
 }
 ''',
   'android/key.properties': 'storePassword=hunter2\nkeyPassword=hunter2\n',
-  '.env': 'API_TOKEN=sk-livefakefakefakefakefakefake\n',
+  '.env': 'API_TOKEN=${fakeSecret(['sk', '-livefakefakefakefakefakefake'])}\n',
 };
 
 /// A machine with Flutter 3.44.9 installed globally, a JDK 25, an Android
@@ -126,7 +130,10 @@ final class Scenario {
     environment: {
       'PATH': '/opt/flutter/bin:/usr/bin',
       'HOME': '/home/dev',
-      'GITHUB_TOKEN': 'ghp_abcdefghijklmnopqrstuvwxyz0123456789',
+      'GITHUB_TOKEN': fakeSecret([
+        'gh',
+        'p_abcdefghijklmnopqrstuvwxyz0123456789',
+      ]),
     },
   );
   final FakeConsole? console;

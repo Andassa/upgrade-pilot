@@ -9,10 +9,10 @@ import '../support/fakes.dart';
 import '../support/scenario.dart';
 
 /// Fake secrets planted in the project and the environment by [Scenario].
-const secrets = [
+final List<String> secrets = [
   'hunter2',
-  'sk-livefakefakefakefakefakefake',
-  'ghp_abcdefghijklmnopqrstuvwxyz0123456789',
+  fakeSecret(['sk', '-livefakefakefakefakefakefake']),
+  fakeSecret(['ghp', '_abcdefghijklmnopqrstuvwxyz0123456789']),
 ];
 
 void main() {
@@ -81,24 +81,31 @@ void main() {
         Redactor(homeDirectory: '/Users/alice', extraPaths: ['/srv/build']);
 
     test('masks common secret shapes', () {
-      const samples = {
+      final samples = {
         'storePassword=abc123': 'storePassword=<redacted>',
         'MYAPP_UPLOAD_KEY_PASSWORD = s3cr3t':
             'MYAPP_UPLOAD_KEY_PASSWORD = <redacted>',
-        'api_key: "AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI"':
+        fakeSecret(['api_key: "AIz', 'aSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI"']):
             'api_key: "<redacted>"',
         'Authorization: Bearer abcdefghijklmnop': 'Authorization: <redacted>',
         'curl -H "Bearer abcdefghijklmnop"': 'curl -H "Bearer <redacted>"',
         'https://user:pass@example.com/repo.git':
             'https://<redacted>@example.com/repo.git',
-        'token ghp_abcdefghijklmnopqrstuvwxyz0123456789': 'token <redacted>',
-        'key AKIAABCDEFGHIJKLMNOP': 'key <redacted>',
-        'slack xoxb-1234567890-abcdef': 'slack <redacted>',
-        'jwt eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.abcdefghijkl':
-            'jwt <redacted>',
-        'pat github_pat_11ABCDEFGHIJKLMNOPQRSTUV': 'pat <redacted>',
-        'openai sk-abcdefghijklmnopqrstuvwxyz': 'openai <redacted>',
-        'Google AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI': 'Google <redacted>',
+        fakeSecret(['token ghp', '_abcdefghijklmnopqrstuvwxyz0123456789']):
+            'token <redacted>',
+        fakeSecret(['key AKI', 'AABCDEFGHIJKLMNOP']): 'key <redacted>',
+        fakeSecret(['slack xoxb', '-1234567890-abcdef']): 'slack <redacted>',
+        fakeSecret([
+          'jwt ey',
+          'JhbGciOiJIUzI1NiJ9.ey',
+          'JzdWIiOiIxMjM0NTY3ODkwIn0.abcdefghijkl',
+        ]): 'jwt <redacted>',
+        fakeSecret(['pat github_pat', '_11ABCDEFGHIJKLMNOPQRSTUV']):
+            'pat <redacted>',
+        fakeSecret(['openai sk', '-abcdefghijklmnopqrstuvwxyz']):
+            'openai <redacted>',
+        fakeSecret(['Google AIz', 'aSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI']):
+            'Google <redacted>',
       };
       for (final MapEntry(:key, :value) in samples.entries) {
         expect(redactor.redact(key), value, reason: key);
@@ -108,8 +115,11 @@ void main() {
     test('private keys and personal paths', () {
       expect(
         redactor.redact(
-          '-----BEGIN RSA PRIVATE KEY-----\nMIIE\n-----END RSA PRIVATE '
-          'KEY-----',
+          fakeSecret([
+            '-----BEGIN RSA PRIVATE',
+            ' KEY-----\nMIIE\n-----END RSA PRIVATE',
+            ' KEY-----',
+          ]),
         ),
         '<redacted private key>',
       );

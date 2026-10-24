@@ -4,7 +4,7 @@
 # the excerpts shown in the README.
 #
 # Requirements: Flutter on the PATH, an Android SDK, network access.
-# Usage: bash docs/demo.sh [target-version]
+# Usage: bash doc/demo.sh [target-version]
 set -euo pipefail
 
 cd "$(dirname "$0")/.."

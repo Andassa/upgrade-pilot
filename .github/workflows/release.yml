@@ -59,7 +59,7 @@ jobs:
         with:
           sdk: stable
       - run: dart pub get
-      - run: dart pub publish --dry-run
+      - run: dart run tool/publish_check.dart
 
   release:
     name: GitHub release

@@ -12,12 +12,6 @@ final _patterns = <String, RegExp>{
   'pub.dev credentials': RegExp(r'"accessToken"\s*:\s*"ya29\.'),
 };
 
-/// Test files that deliberately contain fake secrets to prove redaction.
-const _allowed = {
-  'test/security/secret_leak_test.dart',
-  'test/support/scenario.dart',
-};
-
 void main() {
   final listed = Process.runSync('git', ['ls-files', '-z']);
   if (listed.exitCode != 0) {
@@ -27,7 +21,6 @@ void main() {
   final files = '${listed.stdout}'.split('\u0000').where((f) => f.isNotEmpty);
   var findings = 0;
   for (final path in files) {
-    if (_allowed.contains(path)) continue;
     final file = File(path);
     if (!file.existsSync() || file.lengthSync() > 2 * 1024 * 1024) continue;
     final String content;

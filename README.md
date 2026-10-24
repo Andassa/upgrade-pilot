@@ -45,7 +45,7 @@ Native binaries for macOS (arm64, x64), Linux and Windows are attached to each [
 
 ## What a run looks like
 
-The excerpts below are copied from real executions on macOS (Flutter 3.44.8, JDK 25) with `NO_COLOR` and a non-interactive terminal; only the timestamps printed in this mode were removed. `docs/demo.sh` reproduces them.
+The excerpts below are copied from real executions on macOS (Flutter 3.44.8, JDK 25) with `NO_COLOR` and a non-interactive terminal; only the timestamps printed in this mode were removed. `doc/demo.sh` reproduces them.
 
 **`doctor`** checks what verification needs:
 
@@ -344,7 +344,7 @@ make verify          # format, data checksums, analyzer (fatal infos), tests, co
 make test            # unit + golden + security + architecture tests, coverage per layer
 make golden          # rewrite terminal goldens after an intended UI change
 make integration     # real runs on test/fixtures (Flutter + Android SDK needed)
-make demo            # docs/demo.sh: a reproducible real run into build/demo
+make demo            # doc/demo.sh: a reproducible real run into build/demo
 make build           # native binary in build/
 make release-dry-run
 ```
